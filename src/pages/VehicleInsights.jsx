@@ -75,7 +75,57 @@ export default function VehicleInsights() {
                 </table>
             </div>
 
+            <h2 className="text-large" style={{ marginTop: '30px' }}>Edge Unit Configuration</h2>
+            <div className="card" style={{ marginTop: '15px' }}>
+                <div className="edge-config-grid">
+                    <div className="config-item">
+                        <span className="label">Hardware</span>
+                        <span className="value">Raspberry Pi 5 (8GB)</span>
+                    </div>
+                    <div className="config-item">
+                        <span className="label">Model</span>
+                        <span className="value">YOLOv8-S (Optimized)</span>
+                    </div>
+                    <div className="config-item">
+                        <span className="label">Inference</span>
+                        <span className="value">CPU / Reduced ROI</span>
+                    </div>
+                    <div className="config-item">
+                        <span className="label">Latency</span>
+                        <span className="value">&lt; 100ms (Edge-First)</span>
+                    </div>
+                </div>
+                <div className="config-description" style={{ marginTop: '20px', fontSize: '14px', color: '#444', lineHeight: '1.6' }}>
+                    <p>
+                        <strong>Deployment Strategy:</strong> Mounted fixed forward-facing camera ensures stable geometry.
+                        Inference runs locally avoiding network dependency. Detections are confirmed across consecutive frames (Temporal Consistency)
+                        to suppress false positives. GPS data is attached asynchronously via Bluetooth to maintain alert prioritization.
+                    </p>
+                </div>
+            </div>
+
             <style>{`
+        .edge-config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .config-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .config-item .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .config-item .value {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--gov-uk-blue);
+        }
         .stat-big {
           font-size: 36px;
           font-weight: 700;
